@@ -1,0 +1,684 @@
+2025-04-20 01:02:21,459 - music-generator-api - INFO - Starting server on port 8000
+2025-04-20 01:02:21,460 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-04-20 01:02:33,327 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:02:33,327 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:93]
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_part_data with data[97:99]
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_header_field with data[143:162]
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_header_value with data[164:190]
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:02:33,328 - python_multipart.multipart - DEBUG - Calling on_part_data with data[194:218]
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_header_field with data[262:281]
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_header_value with data[283:313]
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_part_data with data[317:322]
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_header_field with data[366:385]
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_header_value with data[387:412]
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:02:33,329 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:02:33,330 - python_multipart.multipart - DEBUG - Calling on_part_data with data[416:420]
+2025-04-20 01:02:33,330 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:02:33,330 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-20 01:02:33,330 - music-generator-api - INFO - Creating new job b164f5fb-9f5d-4c2d-935c-c96e572a0dc8
+2025-04-20 01:02:33,330 - music-generator-api - DEBUG - Parameters: style_prompt=Piano, audio_length=95, model_id=ASLP-lab/DiffRhythm-full, chunked=True
+2025-04-20 01:02:33,330 - music-generator-api - DEBUG - No lyrics file provided
+2025-04-20 01:02:33,330 - music-generator-api - INFO - Adding generation task to background for job b164f5fb-9f5d-4c2d-935c-c96e572a0dc8
+2025-04-20 01:02:33,335 - music-generator-api - INFO - Starting song generation for job b164f5fb-9f5d-4c2d-935c-c96e572a0dc8
+2025-04-20 01:02:33,335 - music-generator-api - INFO - No lyrics provided, creating empty lyrics file
+2025-04-20 01:02:33,336 - music-generator-api - INFO - Using style prompt: Piano
+2025-04-20 01:02:33,336 - music-generator-api - INFO - Executing command: python3 infer/infer.py --audio-length 95 --repo_id ASLP-lab/DiffRhythm-full --output-dir infer/example/output --chunked --lrc-path temp_uploads/empty_lyrics_b164f5fb-9f5d-4c2d-935c-c96e572a0dc8.lrc --ref-prompt Piano
+2025-04-20 01:02:33,336 - music-generator-api - DEBUG - Starting subprocess
+2025-04-20 01:02:50,740 - music-generator-api - DEBUG - Command stdout: Current working directory: /Users/pavelstepanov/Projects/MusicAI/resonateAI/backend
+[DEBUG] Argument parsing completed.
+[DEBUG] Using device: mps
+[DEBUG] Audio length set to 95s, max frames: 2048
+[DEBUG] Loading models from Hugging Face...
+./g2p/sources/g2p_chinese_model/poly_bert_model.onnx
+[DEBUG] Models loaded successfully.
+[DEBUG] Reading lyrics file...
+[DEBUG] Processing lyrics tokens...
+
+2025-04-20 01:02:50,740 - music-generator-api - DEBUG - Command stderr: /Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:118: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'CoreMLExecutionProvider, AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Traceback (most recent call last):
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer.py", line 181, in <module>
+    lrc_prompt, start_time = get_lrc_token(max_frames, lrc, tokenizer, device)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 208, in get_lrc_token
+    line_token = tokenizer.encode(line)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 185, in encode
+    phone, token = self.tokenizer(text)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p_generation.py", line 106, in chn_eng_g2p
+    phoneme, token = g2p(seg[0], text, seg[1])
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p_generation.py", line 25, in g2p
+    return text_tokenizer.tokenize(text=text, sentence=sentence, language=language)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p/__init__.py", line 47, in tokenize
+    phonemes = self._clean_text(text, sentence, language, ["cjekfd_cleaners"])
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p/__init__.py", line 65, in _clean_text
+    text = cleaner(text, sentence, language, self.text_tokenizers)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p/cleaners.py", line 22, in cjekfd_cleaners
+    raise Exception("Unknown language: %s" % language)
+Exception: Unknown language: 
+
+2025-04-20 01:02:50,740 - music-generator-api - ERROR - Command failed with return code 1
+2025-04-20 01:02:50,740 - music-generator-api - ERROR - Error during generation: Generation failed: /Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:118: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'CoreMLExecutionProvider, AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Traceback (most recent call last):
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer.py", line 181, in <module>
+    lrc_prompt, start_time = get_lrc_token(max_frames, lrc, tokenizer, device)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 208, in get_lrc_token
+    line_token = tokenizer.encode(line)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 185, in encode
+    phone, token = self.tokenizer(text)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p_generation.py", line 106, in chn_eng_g2p
+    phoneme, token = g2p(seg[0], text, seg[1])
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p_generation.py", line 25, in g2p
+    return text_tokenizer.tokenize(text=text, sentence=sentence, language=language)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p/__init__.py", line 47, in tokenize
+    phonemes = self._clean_text(text, sentence, language, ["cjekfd_cleaners"])
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p/__init__.py", line 65, in _clean_text
+    text = cleaner(text, sentence, language, self.text_tokenizers)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p/cleaners.py", line 22, in cjekfd_cleaners
+    raise Exception("Unknown language: %s" % language)
+Exception: Unknown language: 
+Traceback (most recent call last):
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/app.py", line 114, in generate_song
+    raise Exception(f"Generation failed: {result.stderr}")
+Exception: Generation failed: /Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:118: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'CoreMLExecutionProvider, AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Traceback (most recent call last):
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer.py", line 181, in <module>
+    lrc_prompt, start_time = get_lrc_token(max_frames, lrc, tokenizer, device)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 208, in get_lrc_token
+    line_token = tokenizer.encode(line)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 185, in encode
+    phone, token = self.tokenizer(text)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p_generation.py", line 106, in chn_eng_g2p
+    phoneme, token = g2p(seg[0], text, seg[1])
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p_generation.py", line 25, in g2p
+    return text_tokenizer.tokenize(text=text, sentence=sentence, language=language)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p/__init__.py", line 47, in tokenize
+    phonemes = self._clean_text(text, sentence, language, ["cjekfd_cleaners"])
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p/__init__.py", line 65, in _clean_text
+    text = cleaner(text, sentence, language, self.text_tokenizers)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p/cleaners.py", line 22, in cjekfd_cleaners
+    raise Exception("Unknown language: %s" % language)
+Exception: Unknown language: 
+
+2025-04-20 01:03:40,783 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:114]
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:154]
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_part_data with data[158:2339]
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2383:2402]
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2404:2434]
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2438:2440]
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:03:40,784 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2484:2503]
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2505:2531]
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2535:2559]
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2603:2622]
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2624:2654]
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2658:2663]
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2707:2726]
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2728:2753]
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2757:2761]
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:03:40,785 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-20 01:03:40,786 - music-generator-api - INFO - Creating new job 372c3b95-dc0a-4407-8b5d-7b255443d015
+2025-04-20 01:03:40,786 - music-generator-api - DEBUG - Parameters: style_prompt=Piano, audio_length=95, model_id=ASLP-lab/DiffRhythm-base, chunked=True
+2025-04-20 01:03:40,786 - music-generator-api - DEBUG - Saving lyrics file: eg_en.lrc
+2025-04-20 01:03:40,786 - music-generator-api - DEBUG - Lyrics file saved to temp_uploads/temp_lyrics_372c3b95-dc0a-4407-8b5d-7b255443d015.lrc
+2025-04-20 01:03:40,786 - music-generator-api - INFO - Adding generation task to background for job 372c3b95-dc0a-4407-8b5d-7b255443d015
+2025-04-20 01:03:40,787 - music-generator-api - INFO - Starting song generation for job 372c3b95-dc0a-4407-8b5d-7b255443d015
+2025-04-20 01:03:40,787 - music-generator-api - INFO - Using provided lyrics file: temp_uploads/temp_lyrics_372c3b95-dc0a-4407-8b5d-7b255443d015.lrc
+2025-04-20 01:03:40,787 - music-generator-api - INFO - Using style prompt: Piano
+2025-04-20 01:03:40,787 - music-generator-api - INFO - Executing command: python3 infer/infer.py --audio-length 95 --repo_id ASLP-lab/DiffRhythm-base --output-dir infer/example/output --chunked --lrc-path temp_uploads/temp_lyrics_372c3b95-dc0a-4407-8b5d-7b255443d015.lrc --ref-prompt Piano
+2025-04-20 01:03:40,787 - music-generator-api - DEBUG - Starting subprocess
+2025-04-20 01:04:40,654 - music-generator-api - DEBUG - Command stdout: Current working directory: /Users/pavelstepanov/Projects/MusicAI/resonateAI/backend
+[DEBUG] Argument parsing completed.
+[DEBUG] Using device: mps
+[DEBUG] Audio length set to 95s, max frames: 2048
+[DEBUG] Loading models from Hugging Face...
+./g2p/sources/g2p_chinese_model/poly_bert_model.onnx
+[DEBUG] Models loaded successfully.
+[DEBUG] Reading lyrics file...
+[DEBUG] Processing lyrics tokens...
+[DEBUG] Lyrics tokens processed.
+[DEBUG] Generating style prompt from text...
+[DEBUG] Style prompt generated.
+[DEBUG] Generating negative style prompt...
+[DEBUG] Negative style prompt generated.
+[DEBUG] Generating reference latent...
+[DEBUG] Reference latent generated.
+[DEBUG] Starting song generation...
+[DEBUG] Starting inference...
+[DEBUG] Sampling with CFM model...
+[DEBUG] Converting generated output to float32...
+[DEBUG] Decoding audio with VAE model...
+[DEBUG] Rearranging and normalizing audio...
+[DEBUG] Inference completed.
+[DEBUG] Inference completed in 38.85 seconds.
+[DEBUG] Creating output directory: infer/example/output
+[DEBUG] Saving generated song to infer/example/output/output_20250420_010439.wav...
+[DEBUG] Song saved successfully.
+
+2025-04-20 01:04:40,654 - music-generator-api - DEBUG - Command stderr: /Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:118: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'CoreMLExecutionProvider, AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+
+2025-04-20 01:04:40,654 - music-generator-api - DEBUG - Looking for output files
+2025-04-20 01:04:40,654 - music-generator-api - INFO - Found output file: output_20250420_010439.wav
+2025-04-20 01:07:55,192 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:07:55,193 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-04-20 01:07:55,193 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:114]
+2025-04-20 01:07:55,193 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:07:55,193 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2025-04-20 01:07:55,193 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:154]
+2025-04-20 01:07:55,193 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:07:55,193 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:07:55,193 - python_multipart.multipart - DEBUG - Calling on_part_data with data[158:1702]
+2025-04-20 01:07:55,193 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:07:55,194 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:07:55,194 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1746:1765]
+2025-04-20 01:07:55,194 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1767:1797]
+2025-04-20 01:07:55,194 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:07:55,194 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:07:55,194 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1801:1803]
+2025-04-20 01:07:55,194 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:07:55,194 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:07:55,194 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1847:1866]
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1868:1894]
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1898:1922]
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1966:1985]
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1987:2017]
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:07:55,195 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2021:2026]
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2070:2089]
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2091:2116]
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2120:2124]
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:07:55,196 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-20 01:07:55,197 - music-generator-api - INFO - Creating new job 583eef83-f86b-48eb-87b6-01dcbad1354d
+2025-04-20 01:07:55,197 - music-generator-api - DEBUG - Parameters: style_prompt=Piano, audio_length=95, model_id=ASLP-lab/DiffRhythm-base, chunked=True
+2025-04-20 01:07:55,197 - music-generator-api - DEBUG - Saving lyrics file: eg_en.lrc
+2025-04-20 01:07:55,197 - music-generator-api - DEBUG - Lyrics file saved to temp_uploads/temp_lyrics_583eef83-f86b-48eb-87b6-01dcbad1354d.lrc
+2025-04-20 01:07:55,197 - music-generator-api - INFO - Adding generation task to background for job 583eef83-f86b-48eb-87b6-01dcbad1354d
+2025-04-20 01:07:55,199 - music-generator-api - INFO - Starting song generation for job 583eef83-f86b-48eb-87b6-01dcbad1354d
+2025-04-20 01:07:55,199 - music-generator-api - INFO - Using provided lyrics file: temp_uploads/temp_lyrics_583eef83-f86b-48eb-87b6-01dcbad1354d.lrc
+2025-04-20 01:07:55,199 - music-generator-api - INFO - Using style prompt: Piano
+2025-04-20 01:07:55,200 - music-generator-api - INFO - Executing command: python3 infer/infer.py --audio-length 95 --repo_id ASLP-lab/DiffRhythm-base --output-dir infer/example/output --chunked --lrc-path temp_uploads/temp_lyrics_583eef83-f86b-48eb-87b6-01dcbad1354d.lrc --ref-prompt Piano
+2025-04-20 01:07:55,200 - music-generator-api - DEBUG - Starting subprocess
+2025-04-20 01:08:53,546 - music-generator-api - DEBUG - Command stdout: Current working directory: /Users/pavelstepanov/Projects/MusicAI/resonateAI/backend
+[DEBUG] Argument parsing completed.
+[DEBUG] Using device: mps
+[DEBUG] Audio length set to 95s, max frames: 2048
+[DEBUG] Loading models from Hugging Face...
+./g2p/sources/g2p_chinese_model/poly_bert_model.onnx
+[DEBUG] Models loaded successfully.
+[DEBUG] Reading lyrics file...
+[DEBUG] Processing lyrics tokens...
+[DEBUG] Lyrics tokens processed.
+[DEBUG] Generating style prompt from text...
+[DEBUG] Style prompt generated.
+[DEBUG] Generating negative style prompt...
+[DEBUG] Negative style prompt generated.
+[DEBUG] Generating reference latent...
+[DEBUG] Reference latent generated.
+[DEBUG] Starting song generation...
+[DEBUG] Starting inference...
+[DEBUG] Sampling with CFM model...
+[DEBUG] Converting generated output to float32...
+[DEBUG] Decoding audio with VAE model...
+[DEBUG] Rearranging and normalizing audio...
+[DEBUG] Inference completed.
+[DEBUG] Inference completed in 39.22 seconds.
+[DEBUG] Creating output directory: infer/example/output
+[DEBUG] Saving generated song to infer/example/output/output_20250420_010852.wav...
+[DEBUG] Song saved successfully.
+
+2025-04-20 01:08:53,546 - music-generator-api - DEBUG - Command stderr: /Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:118: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'CoreMLExecutionProvider, AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+
+2025-04-20 01:08:53,546 - music-generator-api - DEBUG - Looking for output files
+2025-04-20 01:08:53,546 - music-generator-api - INFO - Found output file: output_20250420_010852.wav
+2025-04-20 01:11:47,235 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:11:47,235 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-04-20 01:11:47,235 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:114]
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:154]
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_part_data with data[158:1702]
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1746:1765]
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1767:1797]
+2025-04-20 01:11:47,236 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1801:1804]
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1848:1867]
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1869:1895]
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1899:1923]
+2025-04-20 01:11:47,237 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1967:1986]
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1988:2018]
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2022:2033]
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2077:2096]
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2098:2123]
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:11:47,238 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2127:2131]
+2025-04-20 01:11:47,239 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:11:47,239 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-20 01:11:47,239 - music-generator-api - INFO - Creating new job 2f81a596-a2cb-43f9-a271-b4fe16daa7c8
+2025-04-20 01:11:47,240 - music-generator-api - DEBUG - Parameters: style_prompt=Piano house, audio_length=285, model_id=ASLP-lab/DiffRhythm-full, chunked=True
+2025-04-20 01:11:47,240 - music-generator-api - DEBUG - Saving lyrics file: eg_en.lrc
+2025-04-20 01:11:47,240 - music-generator-api - DEBUG - Lyrics file saved to temp_uploads/temp_lyrics_2f81a596-a2cb-43f9-a271-b4fe16daa7c8.lrc
+2025-04-20 01:11:47,241 - music-generator-api - INFO - Adding generation task to background for job 2f81a596-a2cb-43f9-a271-b4fe16daa7c8
+2025-04-20 01:11:47,242 - music-generator-api - INFO - Starting song generation for job 2f81a596-a2cb-43f9-a271-b4fe16daa7c8
+2025-04-20 01:11:47,243 - music-generator-api - INFO - Using provided lyrics file: temp_uploads/temp_lyrics_2f81a596-a2cb-43f9-a271-b4fe16daa7c8.lrc
+2025-04-20 01:11:47,243 - music-generator-api - INFO - Using style prompt: Piano house
+2025-04-20 01:11:47,243 - music-generator-api - INFO - Executing command: python3 infer/infer.py --audio-length 285 --repo_id ASLP-lab/DiffRhythm-full --output-dir infer/example/output --chunked --lrc-path temp_uploads/temp_lyrics_2f81a596-a2cb-43f9-a271-b4fe16daa7c8.lrc --ref-prompt Piano house
+2025-04-20 01:11:47,243 - music-generator-api - DEBUG - Starting subprocess
+2025-04-20 01:14:39,993 - music-generator-api - DEBUG - Command stdout: Current working directory: /Users/pavelstepanov/Projects/MusicAI/resonateAI/backend
+[DEBUG] Argument parsing completed.
+[DEBUG] Using device: mps
+[DEBUG] Audio length set to 285s, max frames: 6144
+[DEBUG] Loading models from Hugging Face...
+./g2p/sources/g2p_chinese_model/poly_bert_model.onnx
+[DEBUG] Models loaded successfully.
+[DEBUG] Reading lyrics file...
+[DEBUG] Processing lyrics tokens...
+[DEBUG] Lyrics tokens processed.
+[DEBUG] Generating style prompt from text...
+[DEBUG] Style prompt generated.
+[DEBUG] Generating negative style prompt...
+[DEBUG] Negative style prompt generated.
+[DEBUG] Generating reference latent...
+[DEBUG] Reference latent generated.
+[DEBUG] Starting song generation...
+[DEBUG] Starting inference...
+[DEBUG] Sampling with CFM model...
+[DEBUG] Converting generated output to float32...
+[DEBUG] Decoding audio with VAE model...
+[DEBUG] Rearranging and normalizing audio...
+[DEBUG] Inference completed.
+[DEBUG] Inference completed in 151.59 seconds.
+[DEBUG] Creating output directory: infer/example/output
+[DEBUG] Saving generated song to infer/example/output/output_20250420_011438.wav...
+[DEBUG] Song saved successfully.
+
+2025-04-20 01:14:39,994 - music-generator-api - DEBUG - Command stderr: /Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:118: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'CoreMLExecutionProvider, AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+
+2025-04-20 01:14:39,994 - music-generator-api - DEBUG - Looking for output files
+2025-04-20 01:14:39,994 - music-generator-api - INFO - Found output file: output_20250420_011438.wav
+2025-04-20 01:18:18,751 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:18,751 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-04-20 01:18:18,751 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:114]
+2025-04-20 01:18:18,752 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:18,752 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2025-04-20 01:18:18,752 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:154]
+2025-04-20 01:18:18,752 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:18,752 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:18,752 - python_multipart.multipart - DEBUG - Calling on_part_data with data[158:1702]
+2025-04-20 01:18:18,752 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:18,752 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:18,752 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1746:1765]
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1767:1797]
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1801:1803]
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1847:1866]
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1868:1894]
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1898:1922]
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:18,753 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:18,754 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1966:1985]
+2025-04-20 01:18:18,754 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1987:2037]
+2025-04-20 01:18:18,754 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:18,754 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2039:2051]
+2025-04-20 01:18:18,754 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2053:2063]
+2025-04-20 01:18:18,754 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:18,754 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:18,755 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2067:32768]
+2025-04-20 01:18:18,755 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-20 01:18:18,756 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-20 01:18:18,757 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:92109]
+2025-04-20 01:18:18,757 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:18,757 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:18,759 - python_multipart.multipart - DEBUG - Calling on_header_field with data[92153:92172]
+2025-04-20 01:18:18,759 - python_multipart.multipart - DEBUG - Calling on_header_value with data[92174:92199]
+2025-04-20 01:18:18,759 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:18,759 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:18,759 - python_multipart.multipart - DEBUG - Calling on_part_data with data[92203:92207]
+2025-04-20 01:18:18,759 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:18,759 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-20 01:18:20,263 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:20,263 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-04-20 01:18:20,263 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:114]
+2025-04-20 01:18:20,263 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:20,263 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2025-04-20 01:18:20,263 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:154]
+2025-04-20 01:18:20,263 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_part_data with data[158:1702]
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1746:1765]
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1767:1797]
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1801:1803]
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1847:1866]
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1868:1894]
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:20,264 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1898:1922]
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1966:1985]
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1987:2037]
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2039:2051]
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2053:2063]
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:20,265 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2067:32768]
+2025-04-20 01:18:20,266 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-20 01:18:20,267 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-20 01:18:20,268 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:92109]
+2025-04-20 01:18:20,268 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:20,268 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:20,268 - python_multipart.multipart - DEBUG - Calling on_header_field with data[92153:92172]
+2025-04-20 01:18:20,268 - python_multipart.multipart - DEBUG - Calling on_header_value with data[92174:92199]
+2025-04-20 01:18:20,268 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:20,268 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:20,269 - python_multipart.multipart - DEBUG - Calling on_part_data with data[92203:92207]
+2025-04-20 01:18:20,269 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:20,269 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-20 01:18:27,742 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:27,742 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-04-20 01:18:27,742 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:114]
+2025-04-20 01:18:27,742 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:154]
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_part_data with data[158:1702]
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1746:1765]
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1767:1797]
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1801:1803]
+2025-04-20 01:18:27,743 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1847:1866]
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1868:1894]
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1898:1922]
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1966:1985]
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1987:2037]
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2039:2051]
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2053:2063]
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:27,744 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:27,745 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2067:49152]
+2025-04-20 01:18:27,745 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-20 01:18:27,746 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-20 01:18:27,746 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:75725]
+2025-04-20 01:18:27,746 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:27,746 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:27,746 - python_multipart.multipart - DEBUG - Calling on_header_field with data[75769:75788]
+2025-04-20 01:18:27,746 - python_multipart.multipart - DEBUG - Calling on_header_value with data[75790:75815]
+2025-04-20 01:18:27,747 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:27,747 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:27,747 - python_multipart.multipart - DEBUG - Calling on_part_data with data[75819:75823]
+2025-04-20 01:18:27,747 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:27,747 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-20 01:18:28,696 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:28,697 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-04-20 01:18:28,697 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:114]
+2025-04-20 01:18:28,697 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:28,697 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2025-04-20 01:18:28,697 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:154]
+2025-04-20 01:18:28,697 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_part_data with data[158:1702]
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1746:1765]
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1767:1797]
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1801:1803]
+2025-04-20 01:18:28,698 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:28,699 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:28,699 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1847:1866]
+2025-04-20 01:18:28,699 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1868:1894]
+2025-04-20 01:18:28,699 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:28,699 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:28,699 - python_multipart.multipart - DEBUG - Calling on_part_data with data[1898:1922]
+2025-04-20 01:18:28,699 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:28,699 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:28,699 - python_multipart.multipart - DEBUG - Calling on_header_field with data[1966:1985]
+2025-04-20 01:18:28,700 - python_multipart.multipart - DEBUG - Calling on_header_value with data[1987:2037]
+2025-04-20 01:18:28,700 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:28,700 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2039:2051]
+2025-04-20 01:18:28,700 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2053:2063]
+2025-04-20 01:18:28,700 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:28,700 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:28,700 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2067:49152]
+2025-04-20 01:18:28,701 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-20 01:18:28,702 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-20 01:18:28,702 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:75725]
+2025-04-20 01:18:28,702 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:28,702 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-20 01:18:28,702 - python_multipart.multipart - DEBUG - Calling on_header_field with data[75769:75788]
+2025-04-20 01:18:28,702 - python_multipart.multipart - DEBUG - Calling on_header_value with data[75790:75815]
+2025-04-20 01:18:28,702 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-20 01:18:28,703 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-20 01:18:28,703 - python_multipart.multipart - DEBUG - Calling on_part_data with data[75819:75823]
+2025-04-20 01:18:28,703 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-20 01:18:28,703 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-22 12:07:26,194 - music-generator-api - INFO - Starting server on port 8000
+2025-04-22 12:07:26,195 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-04-22 12:48:33,558 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-22 12:48:33,559 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-04-22 12:48:33,559 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:114]
+2025-04-22 12:48:33,559 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-22 12:48:33,559 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:154]
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_part_data with data[158:2240]
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2284:2303]
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2305:2335]
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-22 12:48:33,560 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2339:2341]
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2385:2404]
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2406:2432]
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2436:2460]
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2504:2523]
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2525:2555]
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-22 12:48:33,561 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2559:2564]
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_header_field with data[2608:2627]
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_header_value with data[2629:2654]
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_part_data with data[2658:2662]
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-22 12:48:33,562 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-22 12:48:33,563 - music-generator-api - INFO - Creating new job 8827793b-7253-4fa8-aff9-1e31d7b173b0
+2025-04-22 12:48:33,563 - music-generator-api - DEBUG - Parameters: style_prompt=Piano, audio_length=95, model_id=ASLP-lab/DiffRhythm-full, chunked=True
+2025-04-22 12:48:33,563 - music-generator-api - DEBUG - Saving lyrics file: eg_en.lrc
+2025-04-22 12:48:33,564 - music-generator-api - DEBUG - Lyrics file saved to temp_uploads/temp_lyrics_8827793b-7253-4fa8-aff9-1e31d7b173b0.lrc
+2025-04-22 12:48:33,564 - music-generator-api - INFO - Adding generation task to background for job 8827793b-7253-4fa8-aff9-1e31d7b173b0
+2025-04-22 12:48:33,571 - music-generator-api - INFO - Starting song generation for job 8827793b-7253-4fa8-aff9-1e31d7b173b0
+2025-04-22 12:48:33,571 - music-generator-api - INFO - Using provided lyrics file: temp_uploads/temp_lyrics_8827793b-7253-4fa8-aff9-1e31d7b173b0.lrc
+2025-04-22 12:48:33,571 - music-generator-api - INFO - Using style prompt: Piano
+2025-04-22 12:48:33,571 - music-generator-api - INFO - Executing command: python3 infer/infer.py --audio-length 95 --repo_id ASLP-lab/DiffRhythm-full --output-dir infer/example/output --chunked --lrc-path temp_uploads/temp_lyrics_8827793b-7253-4fa8-aff9-1e31d7b173b0.lrc --ref-prompt Piano
+2025-04-22 12:48:33,571 - music-generator-api - DEBUG - Starting subprocess
+2025-04-22 12:48:45,078 - music-generator-api - DEBUG - Command stdout: Current working directory: /Users/pavelstepanov/Projects/MusicAI/resonateAI/backend
+[DEBUG] Argument parsing completed.
+[DEBUG] Using device: mps
+[DEBUG] Audio length set to 95s, max frames: 2048
+[DEBUG] Loading models from Hugging Face...
+./g2p/sources/g2p_chinese_model/poly_bert_model.onnx
+
+2025-04-22 12:48:45,079 - music-generator-api - DEBUG - Command stderr: /Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:118: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'CoreMLExecutionProvider, AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+Traceback (most recent call last):
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer.py", line 167, in <module>
+    cfm, tokenizer, muq, vae = prepare_model(max_frames, device, repo_id=args.repo_id)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 90, in prepare_model
+    tokenizer = CNENTokenizer()
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 180, in __init__
+    from g2p.g2p_generation import chn_eng_g2p
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p_generation.py", line 10, in <module>
+    from g2p.utils.g2p import phonemizer_g2p
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/utils/g2p.py", line 17, in <module>
+    phonemizer_zh = EspeakBackend(
+  File "/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/phonemizer/backend/espeak/espeak.py", line 45, in __init__
+    super().__init__(
+  File "/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/phonemizer/backend/espeak/base.py", line 39, in __init__
+    super().__init__(
+  File "/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/phonemizer/backend/base.py", line 77, in __init__
+    raise RuntimeError(  # pragma: nocover
+RuntimeError: espeak not installed on your system
+
+2025-04-22 12:48:45,079 - music-generator-api - ERROR - Command failed with return code 1
+2025-04-22 12:48:45,079 - music-generator-api - ERROR - Error during generation: Generation failed: /Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:118: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'CoreMLExecutionProvider, AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+Traceback (most recent call last):
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer.py", line 167, in <module>
+    cfm, tokenizer, muq, vae = prepare_model(max_frames, device, repo_id=args.repo_id)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 90, in prepare_model
+    tokenizer = CNENTokenizer()
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 180, in __init__
+    from g2p.g2p_generation import chn_eng_g2p
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p_generation.py", line 10, in <module>
+    from g2p.utils.g2p import phonemizer_g2p
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/utils/g2p.py", line 17, in <module>
+    phonemizer_zh = EspeakBackend(
+  File "/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/phonemizer/backend/espeak/espeak.py", line 45, in __init__
+    super().__init__(
+  File "/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/phonemizer/backend/espeak/base.py", line 39, in __init__
+    super().__init__(
+  File "/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/phonemizer/backend/base.py", line 77, in __init__
+    raise RuntimeError(  # pragma: nocover
+RuntimeError: espeak not installed on your system
+Traceback (most recent call last):
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/app.py", line 114, in generate_song
+    raise Exception(f"Generation failed: {result.stderr}")
+Exception: Generation failed: /Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:118: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'CoreMLExecutionProvider, AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+Traceback (most recent call last):
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer.py", line 167, in <module>
+    cfm, tokenizer, muq, vae = prepare_model(max_frames, device, repo_id=args.repo_id)
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 90, in prepare_model
+    tokenizer = CNENTokenizer()
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/infer/infer_utils.py", line 180, in __init__
+    from g2p.g2p_generation import chn_eng_g2p
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/g2p_generation.py", line 10, in <module>
+    from g2p.utils.g2p import phonemizer_g2p
+  File "/Users/pavelstepanov/Projects/MusicAI/resonateAI/backend/g2p/utils/g2p.py", line 17, in <module>
+    phonemizer_zh = EspeakBackend(
+  File "/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/phonemizer/backend/espeak/espeak.py", line 45, in __init__
+    super().__init__(
+  File "/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/phonemizer/backend/espeak/base.py", line 39, in __init__
+    super().__init__(
+  File "/Users/pavelstepanov/miniconda3/envs/diffrhythm/lib/python3.10/site-packages/phonemizer/backend/base.py", line 77, in __init__
+    raise RuntimeError(  # pragma: nocover
+RuntimeError: espeak not installed on your system
+
