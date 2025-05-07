@@ -34,6 +34,9 @@
 
   /* Apply background color to root element */
   background-color: var(--background);
+
+  /* Font family */
+  --font-roboto: "Roboto", system-ui, sans-serif;
 }
 
 /* Dark mode variables */

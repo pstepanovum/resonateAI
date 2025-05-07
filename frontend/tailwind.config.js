@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
     content: [
         "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,8 +9,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["var(--font-geist-sans)"],
-                mono: ["var(--font-geist-mono)"],
+                roboto: ["var(--font-roboto)"],
             },
         },
     },
