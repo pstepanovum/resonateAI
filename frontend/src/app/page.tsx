@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 
 import Image from "next/image";
@@ -29,16 +31,36 @@ import {
   Music,
   Play,
   Pause,
-  Upload
+  Upload,
 } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 // API URL
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+interface FormData {
+  lrcFile: File | null;
+  lrcPath: string;
+  refPrompt: string;
+  refAudioFile: File | null;
+  refAudioPath: string;
+  chunked: boolean;
+  audioLength: string;
+  repoId: string;
+  useRefAudio: boolean;
+  outputDir: string;
+}
+
+interface JobStatus {
+  id?: string;
+  status: string;
+  output_file?: string;
+  error?: string;
+}
 
 export default function MusicGenerationPage() {
   // Form state
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     lrcFile: null,
     lrcPath: "",
     refPrompt: "",
@@ -54,127 +76,117 @@ export default function MusicGenerationPage() {
   // UI state
   const [isLoading, setIsLoading] = useState(false);
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
-  const [error, setError] = useState(null);
-  const [currentJobId, setCurrentJobId] = useState(null);
-  const [jobStatus, setJobStatus] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  const [currentJobId, setCurrentJobId] = useState<string | null>(null);
+  const [jobStatus, setJobStatus] = useState<JobStatus | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Refs
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const lyricsFileRef = useRef<HTMLInputElement>(null);
   const refAudioFileRef = useRef<HTMLInputElement>(null);
-  const statusCheckInterval = useRef(null);
+  const statusCheckInterval = useRef<NodeJS.Timeout | null>(null);
 
   // Handle input changes
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
 
-    // For audio length, only allow numbers and enforce valid options
     if (name === "audioLength") {
-      let numericValue = value.replace(/[^0-9]/g, "");
-      // Restrict to valid values (95 or 285)
-      if (numericValue && numericValue !== "95" && numericValue !== "285") {
-        numericValue = "95"; // Default to 95 if invalid
-      }
-      setFormData({
-        ...formData,
-        [name]: numericValue,
-      });
+      const numericValue = value.replace(/[^0-9]/g, "");
+      const validValue = numericValue === "95" || numericValue === "285" ? numericValue : "95";
+      setFormData((prev) => ({
+        ...prev,
+        [name]: validValue,
+      }));
       return;
     }
 
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: type === "checkbox" ? checked : value,
-    });
+    }));
   };
 
   // Handle file uploads
-  const handleFileChange = (e, fileType) => {
-    const file = e.target.files[0];
+  const handleFileChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    fileType: "lyrics" | "refAudio"
+  ) => {
+    const file = e.target.files?.[0];
     if (!file) return;
 
-    if (fileType === 'lyrics') {
-      if (!file.name.endsWith('.lrc')) {
-        setError('Please select a valid .lrc file');
+    if (fileType === "lyrics") {
+      if (!file.name.endsWith(".lrc")) {
+        setError("Please select a valid .lrc file");
         return;
       }
-      setFormData({
-        ...formData,
+      setFormData((prev) => ({
+        ...prev,
         lrcFile: file,
         lrcPath: file.name,
-      });
-    } else if (fileType === 'refAudio') {
-      if (!file.type.startsWith('audio/')) {
-        setError('Please select a valid audio file');
+      }));
+    } else {
+      if (!file.type.startsWith("audio/")) {
+        setError("Please select a valid audio file");
         return;
       }
-      setFormData({
-        ...formData,
+      setFormData((prev) => ({
+        ...prev,
         refAudioFile: file,
         refAudioPath: file.name,
         useRefAudio: true,
-      });
+      }));
     }
 
     setError(null);
   };
 
   // Form submission
-  const handleGenerate = async (e) => {
+  const handleGenerate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
 
-    // Validation - only require style prompt or reference audio
     if (!formData.useRefAudio && !formData.refPrompt) {
-      setError('Please enter a style prompt or upload a reference audio');
+      setError("Please enter a style prompt or upload a reference audio");
       return;
     }
 
     try {
       setIsLoading(true);
-
-      // Create form data for API
       const apiFormData = new FormData();
 
-      // Add lyrics file if provided (now optional)
       if (formData.lrcFile) {
-        apiFormData.append('lyrics_file', formData.lrcFile);
+        apiFormData.append("lyrics_file", formData.lrcFile);
       }
 
-      apiFormData.append('audio_length', formData.audioLength);
-      apiFormData.append('model_id', formData.repoId);
+      apiFormData.append("audio_length", formData.audioLength);
+      apiFormData.append("model_id", formData.repoId);
 
-      // Either use text prompt or audio reference
       if (formData.useRefAudio && formData.refAudioFile) {
-        apiFormData.append('ref_audio', formData.refAudioFile);
+        apiFormData.append("ref_audio", formData.refAudioFile);
       } else {
-        apiFormData.append('style_prompt', formData.refPrompt);
+        apiFormData.append("style_prompt", formData.refPrompt);
       }
 
-      // Add chunked parameter
-      apiFormData.append('chunked', formData.chunked);
+      apiFormData.append("chunked", String(formData.chunked));
 
-      // Send request to API
       const response = await fetch(`${API_BASE_URL}/api/generate`, {
-        method: 'POST',
+        method: "POST",
         body: apiFormData,
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Failed to generate song');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.detail || "Failed to generate song");
       }
 
-      const data = await response.json();
-
-      setCurrentJobId(data.id);
+      const data: JobStatus = await response.json();
+      setCurrentJobId(data.id || null);
       setJobStatus(data);
-
-      // Start polling for status updates
       statusCheckInterval.current = setInterval(checkStatus, 5000);
     } catch (err) {
-      setError(err.message || 'Failed to start generation');
+      setError(err instanceof Error ? err.message : "Failed to start generation");
       setIsLoading(false);
     }
   };
@@ -187,24 +199,28 @@ export default function MusicGenerationPage() {
       const response = await fetch(`${API_BASE_URL}/api/jobs/${currentJobId}`);
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Failed to check job status');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.detail || "Failed to check job status");
       }
 
-      const status = await response.json();
+      const status: JobStatus = await response.json();
       setJobStatus(status);
 
-      if (status.status === 'completed' || status.status === 'failed') {
-        clearInterval(statusCheckInterval.current);
-        setIsLoading(status.status !== 'completed');
+      if (status.status === "completed" || status.status === "failed") {
+        if (statusCheckInterval.current) {
+          clearInterval(statusCheckInterval.current);
+        }
+        setIsLoading(status.status !== "completed");
 
-        if (status.status === 'failed') {
-          setError(`Generation failed: ${status.error || 'Unknown error'}`);
+        if (status.status === "failed") {
+          setError(`Generation failed: ${status.error || "Unknown error"}`);
         }
       }
     } catch (err) {
-      setError('Failed to check generation status');
-      clearInterval(statusCheckInterval.current);
+      setError("Failed to check generation status");
+      if (statusCheckInterval.current) {
+        clearInterval(statusCheckInterval.current);
+      }
       setIsLoading(false);
     }
   };
@@ -230,14 +246,14 @@ export default function MusicGenerationPage() {
       const handlePause = () => setIsPlaying(false);
       const handleEnded = () => setIsPlaying(false);
 
-      audio.addEventListener('play', handlePlay);
-      audio.addEventListener('pause', handlePause);
-      audio.addEventListener('ended', handleEnded);
+      audio.addEventListener("play", handlePlay);
+      audio.addEventListener("pause", handlePause);
+      audio.addEventListener("ended", handleEnded);
 
       return () => {
-        audio.removeEventListener('play', handlePlay);
-        audio.removeEventListener('pause', handlePause);
-        audio.removeEventListener('ended', handleEnded);
+        audio.removeEventListener("play", handlePlay);
+        audio.removeEventListener("pause", handlePause);
+        audio.removeEventListener("ended", handleEnded);
       };
     }
   }, [jobStatus]);
@@ -252,12 +268,12 @@ export default function MusicGenerationPage() {
   }, []);
 
   // Helper function for download url
-  const getSongDownloadUrl = (filename) => {
+  const getSongDownloadUrl = (filename: string): string => {
     return `${API_BASE_URL}/api/download/${filename}`;
   };
 
   // Helper function for streaming url
-  const getSongStreamUrl = (filename) => {
+  const getSongStreamUrl = (filename: string): string => {
     return `${API_BASE_URL}/audio/${filename}`;
   };
 
@@ -269,14 +285,14 @@ export default function MusicGenerationPage() {
           className="absolute inset-0 bg-cover bg-center opacity-50 transform transition-all duration-1000 hover:scale-110"
           style={{ backgroundImage: "url('/images/bg.webp')" }}
         />
-
         <div className="relative z-10 flex flex-col p-12 w-full text-white">
           <Link href="/" className="flex items-center">
-            <div className="relative w-35 h-12">
+            <div className="relative w-[140px] h-[48px]">
               <Image
                 src="/images/logo-white.png"
                 alt="resonateAI Logo"
-                fill
+                width={140}
+                height={48}
                 className="object-contain brightness-0 invert"
                 priority
               />
@@ -285,7 +301,8 @@ export default function MusicGenerationPage() {
           <div className="mt-auto space-y-2">
             <blockquote className="space-y-2 max-w-md">
               <p className="text-lg font-medium leading-tight">
-                AI as a tool in music-making is fine, but it&apos;s always going to be the humanity in music that makes people want to listen to it.
+                AI as a tool in music-making is fine, but it&apos;s always going to
+                be the humanity in music that makes people want to listen to it.
               </p>
               <footer className="text-base text-white/80">
                 <p className="font-semibold">Jacob Collier</p>
@@ -301,11 +318,12 @@ export default function MusicGenerationPage() {
         <div className="flex items-center justify-center lg:hidden p-4">
           {/* Mobile Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative w-30 h-30">
+            <div className="relative w-[120px] h-[120px]">
               <Image
                 src="/images/logo-black.png"
                 alt="resonateAI Logo"
-                fill
+                width={120}
+                height={120}
                 className="object-contain"
                 priority
               />
@@ -335,19 +353,25 @@ export default function MusicGenerationPage() {
                       d="M83.996.277C37.747.277.253 37.77.253 84.019c0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l.001-.004zm38.404 120.78a5.217 5.217 0 01-7.18 1.73c-19.662-12.01-44.414-14.73-73.564-8.07a5.222 5.222 0 01-6.249-3.93 5.213 5.213 0 013.926-6.25c31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-.903-8.148-4.35a6.538 6.538 0 014.354-8.143c30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-.001zm.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219a7.835 7.835 0 015.221-9.771c29.581-8.98 78.756-7.245 109.83 11.202a7.823 7.823 0 012.74 10.733c-2.2 3.722-7.02 4.949-10.73 2.739z"
                     />
                   </svg>
-                  Use Spotify Distribution <span className="text-xs ml-1">(Coming Soon)</span>
+                  Use Spotify Distribution{" "}
+                  <span className="text-xs ml-1">(Coming Soon)</span>
                 </Button>
 
                 {error && (
-                  <Alert variant="destructive" className="bg-red-50 border border-red-200">
+                  <Alert
+                    variant="destructive"
+                    className="bg-red-50 border border-red-200"
+                  >
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>{error}</AlertDescription>
                   </Alert>
                 )}
 
-                {jobStatus && jobStatus.status === 'completed' && jobStatus.output_file && (
+                {jobStatus && jobStatus.status === "completed" && jobStatus.output_file && (
                   <div className="border rounded-lg p-4 bg-green-50">
-                    <h3 className="font-medium mb-2 text-green-800">Generated Successfully!</h3>
+                    <h3 className="font-medium mb-2 text-green-800">
+                      Generated Successfully!
+                    </h3>
                     <div className="flex items-center space-x-2 mb-2">
                       <Button
                         size="sm"
@@ -369,7 +393,12 @@ export default function MusicGenerationPage() {
                         size="sm"
                         variant="outline"
                         className="flex-1 flex items-center justify-center"
-                        onClick={() => window.open(getSongDownloadUrl(jobStatus.output_file), '_blank')}
+                        onClick={() =>
+                          window.open(
+                            getSongDownloadUrl(jobStatus.output_file!),
+                            "_blank"
+                          )
+                        }
                       >
                         <Download className="mr-1 h-4 w-4" /> Download
                       </Button>
@@ -383,14 +412,17 @@ export default function MusicGenerationPage() {
                   </div>
                 )}
 
-                {jobStatus && jobStatus.status === 'processing' && (
+                {jobStatus && jobStatus.status === "processing" && (
                   <div className="border rounded-lg p-4 bg-blue-50">
-                    <h3 className="font-medium mb-2 text-blue-800">Generating Music...</h3>
+                    <h3 className="font-medium mb-2 text-blue-800">
+                      Generating Music...
+                    </h3>
                     <div className="w-full bg-blue-200 rounded-full h-2.5 mb-2">
                       <div className="bg-blue-600 h-2.5 rounded-full w-1/2 animate-pulse"></div>
                     </div>
                     <p className="text-sm text-blue-600">
-                      This may take several minutes. Please wait while we create your music.
+                      This may take several minutes. Please wait while we create
+                      your music.
                     </p>
                   </div>
                 )}
@@ -400,8 +432,14 @@ export default function MusicGenerationPage() {
                   <div className="space-y-4">
                     {/* Lyrics File (Optional) */}
                     <div className="space-y-2">
-                      <Label htmlFor="lrcPath" className="text-sm font-medium text-black">
-                        Lyrics File (.lrc) <span className="text-xs text-gray-500">(Optional)</span>
+                      <Label
+                        htmlFor="lrcPath"
+                        className="text-sm font-medium text-black"
+                      >
+                        Lyrics File (.lrc){" "}
+                        <span className="text-xs text-gray-500">
+                          (Optional)
+                        </span>
                       </Label>
                       <div className="relative">
                         <input
@@ -417,7 +455,9 @@ export default function MusicGenerationPage() {
                         <button
                           type="button"
                           className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                          onClick={() => lyricsFileRef.current && lyricsFileRef.current.click()}
+                          onClick={() =>
+                            lyricsFileRef.current && lyricsFileRef.current.click()
+                          }
                         >
                           <Upload size={18} />
                         </button>
@@ -426,7 +466,7 @@ export default function MusicGenerationPage() {
                           type="file"
                           accept=".lrc"
                           className="hidden"
-                          onChange={(e) => handleFileChange(e, 'lyrics')}
+                          onChange={(e) => handleFileChange(e, "lyrics")}
                         />
                       </div>
                       <p className="text-xs text-gray-500 flex items-center mt-1">
@@ -437,7 +477,10 @@ export default function MusicGenerationPage() {
 
                     {/* Reference Prompt */}
                     <div className="space-y-2">
-                      <Label htmlFor="refPrompt" className="text-sm font-medium text-black">
+                      <Label
+                        htmlFor="refPrompt"
+                        className="text-sm font-medium text-black"
+                      >
                         Reference Prompt (style guidance)
                       </Label>
                       <input
@@ -455,7 +498,10 @@ export default function MusicGenerationPage() {
                     {/* Audio Length */}
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <Label htmlFor="audioLength" className="text-sm font-medium text-black">
+                        <Label
+                          htmlFor="audioLength"
+                          className="text-sm font-medium text-black"
+                        >
                           Audio Length (seconds)
                         </Label>
                       </div>
@@ -479,14 +525,19 @@ export default function MusicGenerationPage() {
 
                     {/* Chunked Generation */}
                     <div className="flex items-center justify-between space-x-2">
-                      <Label htmlFor="chunked" className="text-sm font-medium text-black">
+                      <Label
+                        htmlFor="chunked"
+                        className="text-sm font-medium text-black"
+                      >
                         Use Chunked Decoding
                       </Label>
                       <Switch
                         id="chunked"
                         name="chunked"
                         checked={formData.chunked}
-                        onCheckedChange={(checked) => setFormData({ ...formData, chunked: checked })}
+                        onCheckedChange={(checked) =>
+                          setFormData((prev) => ({ ...prev, chunked: checked }))
+                        }
                       />
                     </div>
                   </div>
@@ -498,12 +549,20 @@ export default function MusicGenerationPage() {
                     className="border-t border-dashed border-gray-200 pt-4"
                   >
                     <CollapsibleTrigger className="flex items-center justify-center w-full text-sm text-gray-500 hover:text-gray-700">
-                      Advanced Settings {isAdvancedOpen ? <ChevronUp className="ml-1 h-4 w-4" /> : <ChevronDown className="ml-1 h-4 w-4" />}
+                      Advanced Settings{" "}
+                      {isAdvancedOpen ? (
+                        <ChevronUp className="ml-1 h-4 w-4" />
+                      ) : (
+                        <ChevronDown className="ml-1 h-4 w-4" />
+                      )}
                     </CollapsibleTrigger>
                     <CollapsibleContent className="space-y-4 mt-3">
                       {/* Reference Audio */}
                       <div className="space-y-2">
-                        <Label htmlFor="refAudioPath" className="text-sm font-medium text-black">
+                        <Label
+                          htmlFor="refAudioPath"
+                          className="text-sm font-medium text-black"
+                        >
                           Reference Audio
                         </Label>
                         <div className="relative">
@@ -520,7 +579,10 @@ export default function MusicGenerationPage() {
                           <button
                             type="button"
                             className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                            onClick={() => refAudioFileRef.current && refAudioFileRef.current.click()}
+                            onClick={() =>
+                              refAudioFileRef.current &&
+                              refAudioFileRef.current.click()
+                            }
                           >
                             <Upload size={18} />
                           </button>
@@ -529,7 +591,7 @@ export default function MusicGenerationPage() {
                             type="file"
                             accept="audio/*"
                             className="hidden"
-                            onChange={(e) => handleFileChange(e, 'refAudio')}
+                            onChange={(e) => handleFileChange(e, "refAudio")}
                           />
                         </div>
                         <p className="text-xs text-gray-500 flex items-center mt-1">
@@ -540,7 +602,10 @@ export default function MusicGenerationPage() {
 
                       {/* Repo ID */}
                       <div className="space-y-2">
-                        <Label htmlFor="repoId" className="text-sm font-medium text-black">
+                        <Label
+                          htmlFor="repoId"
+                          className="text-sm font-medium text-black"
+                        >
                           Model Repo ID
                         </Label>
                         <select
@@ -550,8 +615,12 @@ export default function MusicGenerationPage() {
                           onChange={handleChange}
                           className="input w-full h-11 text-black transition-all duration-300 ease-in-out border border-gray-200 rounded-md appearance-none"
                         >
-                          <option value="ASLP-lab/DiffRhythm-full">DiffRhythm Full</option>
-                          <option value="ASLP-lab/DiffRhythm-base">DiffRhythm Base</option>
+                          <option value="ASLP-lab/DiffRhythm-full">
+                            DiffRhythm Full
+                          </option>
+                          <option value="ASLP-lab/DiffRhythm-base">
+                            DiffRhythm Base
+                          </option>
                         </select>
                       </div>
                     </CollapsibleContent>
@@ -579,7 +648,9 @@ export default function MusicGenerationPage() {
               <CardFooter>
                 <div className="w-full">
                   <p className="text-xs text-gray-500 leading-tight">
-                    Once generated, your music will be available for streaming and download. You can use reference audio or text prompts to influence the style.
+                    Once generated, your music will be available for streaming and
+                    download. You can use reference audio or text prompts to
+                    influence the style.
                   </p>
                 </div>
               </CardFooter>
