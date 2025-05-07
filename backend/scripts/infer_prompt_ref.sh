@@ -10,7 +10,7 @@ fi
 
 python3 infer/infer.py \
     --lrc-path infer/example/eg_en.lrc \
-    --ref-prompt "piano" \
+    --ref-prompt "hard rock" \
     --audio-length 95 \
     --repo_id ASLP-lab/DiffRhythm-base \
     --output-dir infer/example/output \
