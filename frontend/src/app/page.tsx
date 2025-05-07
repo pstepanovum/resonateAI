@@ -305,7 +305,7 @@ export default function MusicGenerationPage() {
                 be the humanity in music that makes people want to listen to it.
               </p>
               <footer className="text-base text-white/80">
-                <p className="font-semibold">Jacob Collier</p>
+                <p className="font-semibold">Pavel Stepanov</p>
                 <p className="text-sm">Singer and songwriter</p>
               </footer>
             </blockquote>
